@@ -96,9 +96,8 @@ module OmniAuth
           }
         end
 
-        def policy_initialize_client(redirect_uri:, **override_options)
-          options = default_client_options.merge(override_options)
-          options[:redirect_uri] = redirect_uri
+        def policy_initialize_client(policy_options = {})
+          options = default_client_options.merge(policy_options || {})
           Client.new(options)
         end
 
